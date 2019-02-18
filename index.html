@@ -1,113 +1,552 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
-		<title>Aparecida Nutrição</title>
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="css/reset.css">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
 
-	</head>
-	<body>
+<head>
+	<meta charset="UTF-8">
+	<title>Chá da Rafaela</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 
-		<header>
-			<div class="container">
-				<h2 class="titulo">Aparecida Nutrição</h2>
-			</div>
-		</header>
-		<main>
-			<section class="container">
-				<h2>Meus pacientes</h2>
-				<label for="filtrar-tabela">Filtre:</label>
-				<input type="text" name="filtro" id="filtrar-tabela" placeholder="Digite o nome do paciente">
-				<table>
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>Peso(kg)</th>
-							<th>Altura(m)</th>
-							<th>Gordura Corporal(%)</th>
-							<th>IMC</th>
-						</tr>
-					</thead>
-					<tbody id="tabela-pacientes">
-						<tr class="paciente" id="primeiro-paciente">
-							<td class="info-nome">Paulo</td>
-							<td class="info-peso">100</td>
-							<td class="info-altura">2.00</td>
-							<td class="info-gordura">10</td>
-							<td class="info-imc">0</td>
-						</tr>
+</head>
 
-						<tr class="paciente" >
-							<td class="info-nome">João</td>
-							<td class="info-peso">80</td>
-							<td class="info-altura">1.72</td>
-							<td class="info-gordura">40</td>
-							<td class="info-imc">0</td>
-						</tr>
-
-						<tr class="paciente" >
-							<td class="info-nome">Erica</td>
-							<td class="info-peso">54</td>
-							<td class="info-altura">1.64</td>
-							<td class="info-gordura">14</td>
-							<td class="info-imc">0</td>
-						</tr>
-
-						<tr class="paciente">
-							<td class="info-nome">Douglas</td>
-							<td class="info-peso">85</td>
-							<td class="info-altura">1.73</td>
-							<td class="info-gordura">24</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente" >
-							<td class="info-nome">Tatiana</td>
-							<td class="info-peso">46</td>
-							<td class="info-altura">1.55</td>
-							<td class="info-gordura">19</td>
-							<td class="info-imc">0</td>
-						</tr>
-					</tbody>
-				</table>
-				<span id="erro-ajax" class="invisivel">Erro ao buscar os pacientes</span>
-
-				<button id="buscar-pacientes" class="botao bto-principal">Buscar Pacientes</button>
-
-			</section>
-		</main>
-
+<body>
+	<header>
+		<div class="container">
+			<h2 class="titulo">Chá da Rafaela</h2>
+		</div>
+	</header>
+	<main>
 		<section class="container">
-		    <h2 id="titulo-form">Adicionar novo paciente</h2>
-			<ul id="mensagens-erro"></ul>
-		    <form id="form-adiciona">
-		        <div class="">
-		            <label for="nome">Nome:</label>
-		            <input id="nome" name="nome" type="text" placeholder="digite o nome do seu paciente" class="campo">
-		        </div>
-		        <div class="grupo">
-		            <label for="peso">Peso:</label>
-		            <input id="peso" name="peso" type="text" placeholder="digite o peso do seu paciente" class="campo campo-medio">
-		        </div>
-		        <div class="grupo">
-		            <label for="altura">Altura:</label>
-		            <input id="altura" name="altura" type="text" placeholder="digite a altura do seu paciente" class="campo campo-medio">
-		        </div>
-		        <div class="grupo">
-		            <label for="gordura">% de Gordura:</label>
-		            <input id="gordura" type="text" placeholder="digite a porcentagem de gordura do seu paciente" class="campo campo-medio">
-		        </div>
+			<h2>Meus convidados</h2>
+			<label for="filtrar-tabela">Filtre:</label>
+			<input type="text" name="filtro-nome" class="filtrar-tabela" placeholder="Digite o nome do convidado">
+			<input type="text" name="filtro-sexo" class="filtrar-tabela" placeholder="Digite o sexo do convidado">
+			<input type="text" name="filtro-idade" class="filtrar-tabela" placeholder="Digite o idade do convidado">
+			<table>
+				<thead>
+				<tr class="header-info">
+					<th>Quantidade Masculino</th>
+					<th>Quantidade Feminino</th>
+					<th>Quantidade Adulto</th>
+					<th>Quantidade Criança</th>
+				</tr>
+				<thead>
+				<tbody>
+					<tr class="totais">
+						<td id="info-masculino"></td>
+						<td id="info-feminino"></td>
+						<td id="info-adulto"></td>
+						<td id="info-crianca"></td>
+					</tr>
+				</tbody
+			</table>
+			<table>
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Sexo</th>
+						<th>Idade</th>
+						<th>Indice</th>
+					</tr>
+				</thead>
+				<tbody id="tabela-convidados">
+					<tr class="convidado">
+						<td class="info-nome">Manoel Teixeira da Silva</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Tereza Maria de Souza Silva</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Maurilânea Souza da Silva</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Júnior</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Bruninha de Souza Ramos</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Douglas</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Letícia de Souza Ramos</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Miriam</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Edinho</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Thais</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Natália</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Hebert</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Emanuelly</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Gabrielly</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Bruna Marcondes</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Alan</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Nicolly</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Camila</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Marcos Arrazi</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Mônica Arrazi</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Caio Arrazi</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Alberto Arrazi</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Telma Arrazi</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Tiago Arrazi</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Maria Arrazi (Vó)</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Raquel Arrazi</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Nilton</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Ricardo Arrazi</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Kátia Almeida</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Guilherme</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Juliana</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Vanessa</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Rogério</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Matheus</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Luiza</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Rafael Arrazi</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Luciana</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Fortuna</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Luara Arrazi</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Regiane Arrazi</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Wesley</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Catarina</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Rita Arrazi</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Giovane</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Adelina Arrazi</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Fernanda Arrazi</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Anderson Silva</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</	td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Celma Neves</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Roberto Neves</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Débora</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Ednoel Fernandes</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Davi</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Kelly Neves</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Valéria Spiandorello</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Carlos</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Heitor</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Isis</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Angelina</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Mônica(Prima)</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Henrique</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Amanda</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Helena</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Fábio FIAP</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Kaue FIAP</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Lucas FIAP</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Marlon FIAP</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Daniel LG</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Carol</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Vivian</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Mayra</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Henrique Veloso</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Camila</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Evandro</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Thalita</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">David</td>
+						<td class="info-sexo">Criança</td>
+						<td class="info-idade">Criança</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Erik</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Giuliana</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Jonas</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Gabriela</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Fernando</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Paloma</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Nety</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					<tr class="convidado">
+						<td class="info-nome">Raphael Leva</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Eric Japa</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Camila Nagano</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Leonardo</td>
+						<td class="info-sexo">Masculino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Carolina Gaspari</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Ida Gaspari</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Maria Cristina</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Elza Melão</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Nilza Tia</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Roberta Prima</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Bianca Martins</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+				</tbody>
+			</table>
 
-		        <button id="adicionar-paciente" class="botao bto-principal">Adicionar</button>
-		    </form>
 		</section>
+	</main>
 
-		<script src="js/calcula-imc.js" ></script>
-		<script src="js/form.js" ></script>
-		<script src="js/remover-paciente.js" ></script>
-		<script src="js/filtra.js" ></script>
-		<script src="js/buscar-pacientes.js" ></script>
+	<section class="container">
+		<h2 id="titulo-form">Adicionar novo convidado</h2>
+		<ul id="mensagens-erro"></ul>
+		<form id="form-adiciona">
+			<div class="">
+				<label for="nome">Nome:</label>
+				<input id="nome" name="nome" type="text" placeholder="digite o nome do seu convidado" class="campo">
+			</div>
+			<div class="grupo">
+				<label for="peso">Sexo:</label>
+				<input id="peso" name="sexo" type="text" placeholder="digite o sexo do seu convidado" class="campo campo-medio">
+			</div>
+			<div class="grupo">
+				<label for="peso">Idade:</label>
+				<input id="peso" name="idade" type="text" placeholder="digite o idade do seu convidado" class="campo campo-medio">
+			</div>
 
-	</body>
+			<button id="adicionar-convidado" class="botao bto-principal">Adicionar</button>
+		</form>
+	</section>
+
+	<script src="js/form.js"></script>
+	<script src="js/remover-convidado.js"></script>
+	<script src="js/filtra.js"></script>
+	<script src="js/calcula-convidados.js"></script>
+
+</body>
+
 </html>

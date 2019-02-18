@@ -54,7 +54,7 @@ section h2{
 table{
 	width: 100%;
 	margin-bottom : .5em;
-    table-layout: fixed;
+  table-layout: fixed;
 
 }
 
@@ -125,7 +125,7 @@ button[disabled=disabled], button:disabled {
 
 }
 
-.adicionar-paciente{
+.adicionar-convidado{
     margin-top: 30px;
 }
 
@@ -133,7 +133,7 @@ button[disabled=disabled], button:disabled {
 	border: 1px solid red;
 }
 
-.paciente-invalido {
+.convidado-invalido {
 	background-color: lightcoral;
 }
 
@@ -146,7 +146,7 @@ button[disabled=disabled], button:disabled {
 	transition: 0.5s;
 }
 
-#filtrar-tabela {
+.filtrar-tabela {
 	width: 200px;
 	height: 35px;
 	margin-bottom: 10px;
