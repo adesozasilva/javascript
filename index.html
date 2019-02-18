@@ -23,33 +23,35 @@
 			<input type="text" name="filtro-nome" class="filtrar-tabela" placeholder="Digite o nome do convidado">
 			<input type="text" name="filtro-sexo" class="filtrar-tabela" placeholder="Digite o sexo do convidado">
 			<input type="text" name="filtro-idade" class="filtrar-tabela" placeholder="Digite o idade do convidado">
+			<input type="button" name="export-csv" id="export-csv" value="Exportar convidados">
+			<div id="json"></div>
+			<div id="csv"></div>
+
 			<table>
 				<thead>
-				<tr class="header-info">
-					<th>Quantidade Masculino</th>
-					<th>Quantidade Feminino</th>
-					<th>Quantidade Adulto</th>
-					<th>Quantidade Criança</th>
-				</tr>
-				<thead>
-				<tbody>
-					<tr class="totais">
-						<td id="info-masculino"></td>
-						<td id="info-feminino"></td>
-						<td id="info-adulto"></td>
-						<td id="info-crianca"></td>
+					<tr class="header-info">
+						<th>Quantidade Masculino</th>
+						<th>Quantidade Feminino</th>
+						<th>Quantidade Adulto</th>
+						<th>Quantidade Criança</th>
 					</tr>
-				</tbody
-			</table>
-			<table>
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Sexo</th>
-						<th>Idade</th>
-						<th>Indice</th>
-					</tr>
-				</thead>
+					<thead>
+					<tbody>
+						<tr class="totais">
+							<td id="info-masculino"></td>
+							<td id="info-feminino"></td>
+							<td id="info-adulto"></td>
+							<td id="info-crianca"></td>
+						</tr>
+					</tbody </table> <table>
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Sexo</th>
+							<th>Idade</th>
+							<th>Indice</th>
+						</tr>
+					</thead>
 				<tbody id="tabela-convidados">
 					<tr class="convidado">
 						<td class="info-nome">Manoel Teixeira da Silva</td>
@@ -284,7 +286,7 @@
 					<tr class="convidado">
 						<td class="info-nome">Anderson Silva</td>
 						<td class="info-sexo">Masculino</td>
-						<td class="info-idade">Adulto</	td>
+						<td class="info-idade">Adulto</ td>
 					</tr>
 					<tr class="convidado">
 						<td class="info-nome">Celma Neves</td>
@@ -515,9 +517,21 @@
 						<td class="info-sexo">Feminino</td>
 						<td class="info-idade">Adulto</td>
 					</tr>
-					<tr class="convidado"><td class="info-nome">Regina</td><td class="info-sexo">Feminino</td><td class="info-idade">Adulto</td></tr>
-					<tr class="convidado"><td class="info-nome">Bianca</td><td class="info-sexo">Feminino</td><td class="info-idade">Adulto</td></tr>
-					<tr class="convidado"><td class="info-nome">Beatriz</td><td class="info-sexo">Feminino</td><td class="info-idade">Adulto</td></tr>
+					<tr class="convidado">
+						<td class="info-nome">Regina</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Bianca</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
+					<tr class="convidado">
+						<td class="info-nome">Beatriz</td>
+						<td class="info-sexo">Feminino</td>
+						<td class="info-idade">Adulto</td>
+					</tr>
 
 				</tbody>
 			</table>
@@ -550,6 +564,7 @@
 	<script src="js/remover-convidado.js"></script>
 	<script src="js/filtra.js"></script>
 	<script src="js/calcula-convidados.js"></script>
+	<script src="js/export-convidados.js"></script>
 
 </body>
 

@@ -18,7 +18,6 @@ function montaIndice(dado) {
 }
 
 function countPorUmCampo(value, classe) {
-  console.log(value);
   var count = 0;
   var convidados = document.querySelectorAll(".convidado");
   if (value.length > 0) {
